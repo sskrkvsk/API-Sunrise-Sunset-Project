@@ -40,7 +40,6 @@ a:focus {
 .left-container {
     background-image: url("../images/sunrise.jpg");
     background-position:  10% 25%;
-
 }
 
 .right-container {
@@ -54,6 +53,9 @@ a:focus {
     opacity: 70%;
     width: 50%;
     box-shadow: rgb(0, 0, 0) 0px 30px 60px 30px inset, rgba(0, 0, 0, 1) 0px 18px 36px -18px inset,  rgba(0, 0, 0, 1) 0px -70px 36px -28px inset,  rgba(0, 0, 0, 1) 50px 0px 36px -28px inset;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -72,7 +74,7 @@ a:focus {
 /* FORM */
 
 form {
-    z-index: 1;
+    z-index: 2;
     position: fixed;
     top: 47%;
     left: 0;
@@ -85,6 +87,10 @@ form {
     align-items: center;
     gap: .5rem;
     box-shadow: rgba(0, 0, 0, 1) 0px 44px 55px, rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px, rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
+}
+
+p {
+    display: none;
 }
 
 .input {
@@ -104,7 +110,7 @@ form {
     opacity: 100%;
 }
 
-.setBtn, .riseBtn {
+.setBtn, .riseBtn, .backBtn {
     font-weight: 800;
     height: 4rem;
     width: 5rem;
@@ -116,8 +122,15 @@ form {
     opacity: 70%;   
 }
 
-.setBtn:hover, .riseBtn:hover {
+.setBtn:hover, .riseBtn:hover, .backBtn:hover {
     opacity: 100%;
+}
+
+.backBtn {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
+    opacity: 60%;
 }
 
 
@@ -142,4 +155,27 @@ form {
         background-repeat: no-repeat;
     }
     
+}
+
+p {
+    font-size: 10rem;
+    z-index: 3;
+    text-align: center;
+    color: white;
+}
+
+.disabled {
+    display: none !important;
+}
+
+.full-screen {
+    width: 100%;
+}
+
+.show-p {
+    display: block;
+    font-size: 10rem;
+    z-index: 3;
+    text-align: center;
+    color: white;
 }

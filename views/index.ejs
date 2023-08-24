@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="styles/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/main.css" />
     <title>RISESUNSET</title>
     <style></style>
   </head>
   <body>
     <div class="container">
-      <div class="left-container"></div>
-      <div class="right-container"></div>
+      <div class="left-container"><p>CHECK</p></div>
+      <div class="right-container"><p>CHECK</p></div>
     </div>
     <div class="thing"></div>
-
+    <button class="backBtn disabled">BACK</button>
     <form method="POST">
-      <input type="submit" class="setBtn" name="set" value="RISE" />
+      <input type="submit" class="riseBtn" name="rise" value="RISE" />
+
       <input
         type="text"
         name="userInput"
@@ -23,7 +25,32 @@
         placeholder="SUN"
         required
       />
-      <input type="submit" class="riseBtn" name="rise" value="SET" />
+      <input type="submit" class="setBtn" name="set" value="SET" />
+
+      <script>
+        $(".setBtn").on("click", function () {
+          $(".left-container, form, .thing").addClass("disabled");
+          $(".right-container").addClass("full-screen");
+          $("p").addClass("show-p");
+          $(".backBtn").removeClass("disabled");
+        });
+
+        $(".riseBtn").on("click", function () {
+          $(".right-container, form, .thing").addClass("disabled");
+          $(".left-container").addClass("full-screen");
+          $("p").addClass("show-p");
+          $(".backBtn").removeClass("disabled");
+        });
+
+        $(".backBtn").on("click", function () {
+          $(".left-container, .right-container, form, .thing").removeClass(
+            "disabled"
+          );
+          $(".right-container, .left-container").removeClass("full-screen");
+          $("p").removeClass("show-p");
+          $(".backBtn").addClass("disabled");
+        });
+      </script>
     </form>
   </body>
 </html>
