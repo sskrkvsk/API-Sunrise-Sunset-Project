@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #ff6600;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+h1, h2, h3, p, ul, ol {
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100vh;
+
+    overflow: hidden;
+    display: flex;
+
+    background: linear-gradient(to bottom, transparent 50%, #ffffff 50%);
+    background-size: 100% 20px; /* Adjust the height of the wave */
+    background-repeat: repeat-y;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    /* Styles for smaller screens */
+}
+
+
+  
+  .left-container, .right-container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+  }
+  
+
+  .left-container::before,
+  .right-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff; /* Background color of the wave */
+    clip-path: polygon(0 0, 100% 25%, 100% 100%, 0 100%);
+  }
+
+  .left-container::before {
+    top: 0;
+    left: 0;
+  }
+
+  .right-container::before {
+    top: 0;
+    right: 0;
+    transform: scaleX(
+      -1
+    ); /* Flip the wave horizontally for the right container */
+  }
