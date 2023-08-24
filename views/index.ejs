@@ -10,14 +10,13 @@
   </head>
   <body>
     <div class="container">
-      <div class="left-container"><p>CHECK</p></div>
-      <div class="right-container"><p>CHECK</p></div>
+      <div class="left-container"><p><%= locals.sunrise %></p></div>
+      <div class="right-container"><p><%= locals.sunset %></p></div>
     </div>
     <div class="thing"></div>
     <button class="backBtn disabled">BACK</button>
     <form method="POST">
       <input type="submit" class="riseBtn" name="rise" value="RISE" />
-
       <input
         type="text"
         name="userInput"
@@ -26,31 +25,38 @@
         required
       />
       <input type="submit" class="setBtn" name="set" value="SET" />
-
-      <script>
-        $(".setBtn").on("click", function () {
-          $(".left-container, form, .thing").addClass("disabled");
-          $(".right-container").addClass("full-screen");
-          $("p").addClass("show-p");
-          $(".backBtn").removeClass("disabled");
-        });
-
-        $(".riseBtn").on("click", function () {
-          $(".right-container, form, .thing").addClass("disabled");
-          $(".left-container").addClass("full-screen");
-          $("p").addClass("show-p");
-          $(".backBtn").removeClass("disabled");
-        });
-
-        $(".backBtn").on("click", function () {
-          $(".left-container, .right-container, form, .thing").removeClass(
-            "disabled"
-          );
-          $(".right-container, .left-container").removeClass("full-screen");
-          $("p").removeClass("show-p");
-          $(".backBtn").addClass("disabled");
-        });
-      </script>
     </form>
+    <div class="words disabled">
+      Want to know when the Sun goes up and down?<br />Type your City or Country
+      in →
+    </div>
+    <script>
+      $(".setBtn").on("click", function () {
+        $(".left-container, form, .thing").addClass("disabled");
+        $(".right-container").addClass("full-screen");
+        $("p").addClass("show-p");
+        $(".backBtn").removeClass("disabled");
+      });
+
+      $(".riseBtn").on("click", function () {
+        $(".right-container, form, .thing").addClass("disabled");
+        $(".left-container").addClass("full-screen");
+        $("p").addClass("show-p");
+        $(".backBtn").removeClass("disabled");
+      });
+
+      $(".backBtn").on("click", function () {
+        $(".left-container, .right-container, form, .thing").removeClass(
+          "disabled"
+        );
+        $(".right-container, .left-container").removeClass("full-screen");
+        $("p").removeClass("show-p");
+        $(".backBtn").addClass("disabled");
+      });
+
+      $(".input").on("click", function () {
+        $(".words").toggleClass("disabled");
+      });
+    </script>
   </body>
 </html>

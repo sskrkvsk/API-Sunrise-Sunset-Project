@@ -78,6 +78,7 @@ form {
     position: fixed;
     top: 47%;
     left: 0;
+    color: white;
     background-color: #000;
     opacity: 95%;
     height: 10%;
@@ -134,28 +135,7 @@ p {
 }
 
 
-@media (max-width: 768px) {
-    .thing {
-        display: none;
-    }
 
-    .container {
-
-
-        flex-direction: column;
-        /* justify-content: space-between; */
-    }
-
-    .left-container, .right-container {
-        opacity: 70%;
-        width: 100%;
-        height: 50%;
-        box-shadow: rgb(0, 0, 0) 0px 30px 60px 30px inset, rgba(0, 0, 0, 1) 0px 18px 36px -18px inset,  rgba(0, 0, 0, 1) 0px -70px 36px -28px inset,  rgba(0, 0, 0, 1) 50px 0px 36px -28px inset;
-        background-size: contain;
-        background-repeat: no-repeat;
-    }
-    
-}
 
 p {
     font-size: 10rem;
@@ -178,4 +158,48 @@ p {
     z-index: 3;
     text-align: center;
     color: white;
+}
+
+
+.words {
+    z-index: 4;
+    font-size: 1.5rem;
+    color: white;
+    position: fixed;
+    top: 49%;
+    left: 10%;
+    opacity: 50%;
+    /* display: none; */
+}
+
+
+@media (max-width: 768px) {
+    .thing {
+        display: none;
+    }
+
+    .container {
+
+
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    .left-container, .right-container {
+        opacity: 70%;
+        width: 100%;
+        height: 50%;
+        box-shadow: rgb(0, 0, 0) 0px 30px 60px 30px inset, rgba(0, 0, 0, 1) 0px 18px 36px -18px inset,  rgba(0, 0, 0, 1) 0px -70px 36px -28px inset,  rgba(0, 0, 0, 1) 50px 0px 36px -28px inset;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .words {
+        text-align: center;
+        position: initial;
+        color: rgba(255, 255, 255, 0.5);
+        background-color: black;
+        opacity: 100%;
+    }
+    
 }

@@ -8,7 +8,9 @@ const port = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const API_URL = "https://example-api.com/random";
+const SUN_API_URL = `https://api.sunrise-sunset.org/json?`;
+const MAP_API_URL = `http://api.positionstack.com/v1/forward?access_key=d7c905e5123d80ba30d8c84aebb497d3&`;
+
 
 app.get("/", (req, res) => {
     res.render("index.ejs");
@@ -17,10 +19,20 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req, res) => {
     try {
-        const result = await axios.get(API_URL);
-        const x = result.data;
+        const place = req.body.userInput;
+        const resultMap = await axios.get(MAP_API_URL + `query=${place}`);
 
-        res.render("index.ejs", {});
+        const lat = resultMap.data.lattitude;
+        const lng = resultMap.data.longitude;
+        const resultSun = await axios.get(SUN_API_URL +`lat=${lat}&lng=${lng}`);
+
+        const sunrise = resultSun.data.results.sunrise;
+        const sunset = resultSun.data.results.sunset;
+
+        res.render("index.ejs", {
+            sunrise: sunrise,
+            sunset: sunset,
+        });
       } catch (error) {
         res.render("index.ejs", { user: error.response.data });
         res.status(500);
