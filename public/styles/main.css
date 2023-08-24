@@ -17,7 +17,6 @@ ul, ol {
 }
 
 a {
-    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -29,13 +28,10 @@ a:focus {
 .container {
     width: 100%;
     height: 100vh;
-
     overflow: hidden;
     display: flex;
     flex-direction: row;
-
     background: black;
-
     justify-content: space-between;
 }
 
@@ -126,5 +122,24 @@ form {
 
 
 @media (max-width: 768px) {
-    /* Styles for smaller screens */
+    .thing {
+        display: none;
+    }
+
+    .container {
+
+
+        flex-direction: column;
+        /* justify-content: space-between; */
+    }
+
+    .left-container, .right-container {
+        opacity: 70%;
+        width: 100%;
+        height: 50%;
+        box-shadow: rgb(0, 0, 0) 0px 30px 60px 30px inset, rgba(0, 0, 0, 1) 0px 18px 36px -18px inset,  rgba(0, 0, 0, 1) 0px -70px 36px -28px inset,  rgba(0, 0, 0, 1) 50px 0px 36px -28px inset;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    
 }
