@@ -16,25 +16,40 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 })
 
-
-app.post("/", async (req, res) => {
+app.post("/sunrise", async (req, res) => {
     try {
         const place = req.body.userInput;
         const resultMap = await axios.get(MAP_API_URL + `query=${place}`);
 
-        const lat = resultMap.data.lattitude;
-        const lng = resultMap.data.longitude;
+        const lat = resultMap.data.data[0].latitude;
+        const lng = resultMap.data.data[0].longitude;
         const resultSun = await axios.get(SUN_API_URL +`lat=${lat}&lng=${lng}`);
 
         const sunrise = resultSun.data.results.sunrise;
-        const sunset = resultSun.data.results.sunset;
-
-        res.render("index.ejs", {
+        res.render("partials/sunrise.ejs", {
             sunrise: sunrise,
-            sunset: sunset,
         });
       } catch (error) {
-        res.render("index.ejs", { user: error.response.data });
+        res.render("partials/sunrise.ejs", { user: error.response.data });
+        res.status(500);
+      }
+  });
+
+  app.post("/sunset", async (req, res) => {
+    try {
+      const place = req.body.userInput;
+      const resultMap = await axios.get(MAP_API_URL + `query=${place}`);
+
+      const lat = resultMap.data.data[0].latitude;
+      const lng = resultMap.data.data[0].longitude;
+      const resultSun = await axios.get(SUN_API_URL +`lat=${lat}&lng=${lng}`);
+
+      const sunset = resultSun.data.results.sunset;
+      res.render("partials/sunset.ejs", {
+          sunset: sunset,
+      });
+      } catch (error) {
+        res.render("partials/sunset.ejs", { user: error.response.data });
         res.status(500);
       }
   });
